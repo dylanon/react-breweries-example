@@ -1,14 +1,46 @@
 body {
+  background: linear-gradient(to bottom right, lightslategrey, slateblue);
+  color: linen;
+  font-family: 'Patua One', cursive;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+}
+
+li {
+  font-style: italic;
+  padding: 1rem 2rem;
+  background: darkslateblue;
+  color: linen;
+}
+
+li:nth-child(2n) {
+  background: slateblue;
+}
+
+a {
+  color: linen;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
