@@ -3,24 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-
   constructor(props) {
-    console.log('constructor was called')
     super(props);
+    console.log('CONSTRUCTOR() RAN')
     this.state = {
       breweries: [],
-      isLoading: false,
+      isLoading: false
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('COMPONENT DID UPDATE')
+  }
+
   componentDidMount() {
-    console.log('componentDidMount')
-    this.setState({
-      isLoading: true
-    })
+    console.log('COMPONENTDIDMOUNT() RAN')
+    // FETCH SOME DATA IN HERE
+    this.setState({ isLoading : true })
     fetch('https://api.openbrewerydb.org/breweries')
       .then(res => {
-        return res.json();
+        return res.json()
       })
       .then(data => {
         this.setState({
@@ -31,29 +33,30 @@ class App extends Component {
   }
 
   render() {
-    console.log('render was called');
-    const { breweries, isLoading } = this.state;
+    console.log('RENDER() RAN')
     return (
       <div className="App">
-        <h1>BREWERIES 🍺</h1>
-        {isLoading ? (
+        <h1>{this.props.title} 🍺</h1>
+
+        {this.state.isLoading ? (
           <img src={logo} className="App-logo" alt="logo"/>
         ) : (
           <ul>
-            {breweries.map(brewery => {
-              const { id, name, website_url, city, state } = brewery
+            {this.state.breweries.map(brewery => {
+              const { id, name, website_url } = brewery
               return (
                 <li key={id}>
-                  <a href={website_url} target="blank">{name}</a>
-                  <p>{city}, {state}</p>
-                </li>
+                  <a href={website_url}>{name}</a>
+                </li>              
               )
             })}
           </ul>
         )}
+
       </div>
     );
   }
 }
 
 export default App;
+
